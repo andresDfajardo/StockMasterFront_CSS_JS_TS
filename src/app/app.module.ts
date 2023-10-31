@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { ServicioService } from './servicio.service';
 import { AppComponent } from './appcomponent/app.component';
 import { CatauniversalComponent } from './catauniversal/catauniversal.component';
+import { PrincipalComponent } from './principal/principal.component';
 
 const appRoutes: Routes = 
 [
@@ -20,6 +21,10 @@ const appRoutes: Routes =
   },
   {
     path: 'Inicio',
+    component:PrincipalComponent,
+  },
+  {
+    path: 'Catalogo',
     component:CatauniversalComponent,
   }
 ];
@@ -27,7 +32,8 @@ const appRoutes: Routes =
 @NgModule({
   declarations: [
     AppComponent,
-    CatauniversalComponent
+    CatauniversalComponent,
+    PrincipalComponent
   ],
   imports: 
   [
