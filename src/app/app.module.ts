@@ -11,37 +11,22 @@ import { ServicioService } from './servicio.service';
 import { AppComponent } from './appcomponent/app.component';
 import { CatauniversalComponent } from './catauniversal/catauniversal.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { ProductoComponent } from './producto/producto.component';
 
-const appRoutes: Routes = 
-[
-  {
-    path: '',
-    pathMatch: 'prefix',
-    redirectTo: 'Inicio'
-  },
-  {
-    path: 'Inicio',
-    component:PrincipalComponent,
-  },
-  {
-    path: 'Catalogo',
-    component:CatauniversalComponent,
-  }
-];
 
 @NgModule({
   declarations: [
     AppComponent,
     CatauniversalComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    ProductoComponent
   ],
   imports: 
   [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes), // se agregan estos 
+    ReactiveFormsModule, 
     HttpClientModule  // <- Agregar la clase    
   ],
   providers: [ServicioService],
