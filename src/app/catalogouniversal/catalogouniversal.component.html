@@ -1,0 +1,57 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Catálogo Universal</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                    <li class="breadcrumb-item active">Catálogo Universal</li>
+                </ol>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Todos los Catalogos</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div id="jsGrid1" class="jsgrid" style="position: relative; height: 100%; width: 100%;">
+                <div class="jsgrid-grid-header jsgrid-header-scrollbar">
+                    <table class="jsgrid-table">
+                        <tr class="jsgrid-header-row">
+                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 150px;">Id Catalogo</th>
+                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                style="width: 50px;">Catalogo</th>
+                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 200px;">Categoria</th>
+                            <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+                                style="width: 100px;">Llave Foranea</th>                            
+                        </tr>                        
+                    </table>
+                </div>
+                <div class="jsgrid-grid-body" style="height: 821px;">
+                    <table class="jsgrid-table">
+                        <tbody>
+                            <tr class="jsgrid-row" *ngFor="let item of catalogoData">
+                                <td class="jsgrid-cell" style="width: 150px;">{{ item.idCatalogo }}</td>
+                                <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{ item.denominacionCat }}</td>
+                                <td class="jsgrid-cell" style="width: 200px;">{{item.catalogoCat}}</td>
+                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ item.llaveForanea }}</td>
+                            </tr>                                                      
+                        </tbody>
+                    </table>
+                </div>
+                <div class="jsgrid-load-shader" style="display: none; position: absolute; inset: 0px; z-index: 1000;">
+                </div>
+                <div class="jsgrid-load-panel"
+                    style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">Please, wait...</div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</section>

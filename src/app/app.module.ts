@@ -12,6 +12,7 @@ import { AppComponent } from './appcomponent/app.component';
 import { CatauniversalComponent } from './catauniversal/catauniversal.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { ProductoComponent } from './producto/producto.component';
+import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversal.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProductoComponent } from './producto/producto.component';
     AppComponent,
     CatauniversalComponent,
     PrincipalComponent,
-    ProductoComponent
+    ProductoComponent,
+    CatalogouniversalComponent
   ],
   imports: 
   [
