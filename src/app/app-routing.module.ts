@@ -4,6 +4,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { CatauniversalComponent } from './catauniversal/catauniversal.component';
 import { ProductoComponent } from './producto/producto.component';
 import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversal.component';
+import { ProveedorComponent } from './proveedor/proveedor.component';
 
 const routes: Routes = 
 [
@@ -22,6 +23,10 @@ const routes: Routes =
   {
     path: 'catalogo',
     component:CatalogouniversalComponent,
+  },
+  {
+    path: 'Proveedor',
+    component:ProveedorComponent,
   }
 ];
 

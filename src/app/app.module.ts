@@ -13,6 +13,7 @@ import { CatauniversalComponent } from './catauniversal/catauniversal.component'
 import { PrincipalComponent } from './principal/principal.component';
 import { ProductoComponent } from './producto/producto.component';
 import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversal.component';
+import { ProveedorComponent } from './proveedor/proveedor.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversa
     CatauniversalComponent,
     PrincipalComponent,
     ProductoComponent,
-    CatalogouniversalComponent
+    CatalogouniversalComponent,
+    ProveedorComponent
   ],
   imports: 
   [

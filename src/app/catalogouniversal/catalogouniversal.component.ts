@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogoUniversalService } from './catalogouniversal.service';
+import { CatalogoUniversalService } from '../catalogouniversal.service';
 
 @Component({
   selector: 'app-catalogouniversal',

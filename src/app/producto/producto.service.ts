@@ -11,7 +11,7 @@ const httpOptions =
 @Injectable({
   providedIn: 'root'
 })
-export class CatalogoUniversalService 
+export class ProductoService 
 {
   private Url: string = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
@@ -31,21 +31,18 @@ export class CatalogoUniversalService
      };
    }
 
-   getCatalogoTotal(): Observable<any> 
+   getTodosLosProductos(): Observable<any> 
   {
-    return this.http.get(this.Url + "/universal", httpOptions);    
+    return this.http.get(this.Url + "/producto", httpOptions);    
   }
 
+  actualizarProducto(producto: any): Observable<any> 
+  {
+    return this.http.put(this.Url + "/producto",producto, httpOptions);    
+  }
 
-   getlListCatologoEsp(tipcat: any): Observable<any> 
-   {
-      return this.http.get(this.Url + "/universal"+ tipcat, httpOptions);
-   }
-
-
-   getlCatEspSelec(IdCat: any): Observable<any> 
-   {
-      return this.http.get(this.Url + "/universal"+IdCat, httpOptions);
-
-   }
+  crearProducto(producto: any): Observable<any> 
+  {
+    return this.http.post(this.Url + "/producto",producto, httpOptions);    
+  }
 }
