@@ -15,43 +15,83 @@
 </div>
 <section class="content">
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Todos los Catalogos</h3>
+      <div class="card-header border-0">
+        <div class="card-tools">
+          <a (click)="getTodosLosCatalogos()" class="btn btn-tool btn-sm">
+            <i class="ion ion-ios-refresh-empty"></i>
+          </a>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update" (click)="limpiarSeleccionado()">
+            Nuevo
+          </button>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <div id="jsGrid1" class="jsgrid" style="position: relative; height: 100%; width: 100%;">
-                <div class="jsgrid-grid-header jsgrid-header-scrollbar">
-                    <table class="jsgrid-table">
-                        <tr class="jsgrid-header-row">
-                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 150px;">Id Catalogo</th>
-                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
-                                style="width: 50px;">Catalogo</th>
-                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 200px;">Categoria</th>
-                            <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
-                                style="width: 100px;">Llave Foranea</th>                            
-                        </tr>                        
-                    </table>
-                </div>
-                <div class="jsgrid-grid-body" style="height: 821px;">
-                    <table class="jsgrid-table">
-                        <tbody>
-                            <tr class="jsgrid-row" *ngFor="let item of catalogoData">
-                                <td class="jsgrid-cell" style="width: 150px;">{{ item.idCatalogo }}</td>
-                                <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">{{ item.denominacionCat }}</td>
-                                <td class="jsgrid-cell" style="width: 200px;">{{item.catalogoCat}}</td>
-                                <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{ item.llaveForanea }}</td>
-                            </tr>                                                      
-                        </tbody>
-                    </table>
-                </div>
-                <div class="jsgrid-load-shader" style="display: none; position: absolute; inset: 0px; z-index: 1000;">
-                </div>
-                <div class="jsgrid-load-panel"
-                    style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">Please, wait...</div>
-            </div>
-        </div>
-        <!-- /.card-body -->
+      </div>
+      <div class="card-body table-responsive p-0">
+        <table class="table table-striped table-valign-middle">
+          <thead>
+            <tr>
+              <th>Id Catalogo</th>
+              <th>Catalogo</th>
+              <th>Categoría</th>
+              <th>Llave Foránea</th>
+              <th>Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of catalogoData">
+              <td>{{ item.idCatalogo }}</td>
+              <td>{{ item.denominacionCat }}</td>
+              <td>{{ item.catalogoCat}}</td>
+              <td>{{ item.llaveForanea }}</td>
+              <td>
+                <a href="#" class="text-muted" (click)="setSeleccionado(item)" data-toggle="modal" data-target="#modal-update">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <!-- /.card -->
-</section>
+  </section>
+  <div class="modal fade" id="modal-update">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="card-body">
+              <div class="form-group">
+                <label>Catalogo</label>
+                <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.denominacionCat" name="denominacionCat">
+              </div>
+              <div class="form-group">
+                <label>Categoria</label>
+                <select class="form-control"  [(ngModel)]="itemSeleccionado.catalogoCat" name="catalogoCat">
+                    <option *ngFor="let item of categoriasCatalogo" [value]="item.denominacionCat">{{item.denominacionCat}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Llave Foránea</label>
+                <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.llaveForanea" name="llaveForanea">
+              </div>
+            </div>
+            <!-- /.card-body -->
+        </form>
+    </div>
+    <div class="modal-footer justify-content-between" *ngIf="nuevoCatalogo">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearCatalogo(itemSeleccionado)">Guardar</button>
+    </div>
+    <div class="modal-footer justify-content-between" *ngIf="!nuevoCatalogo">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="actualizarCatalogo(itemSeleccionado)">Guardar</button>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

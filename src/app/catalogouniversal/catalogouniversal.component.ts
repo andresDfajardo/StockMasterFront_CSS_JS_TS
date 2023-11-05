@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogoUniversalService } from '../catalogouniversal.service';
+import { CatalogoUniversalService } from './catalogouniversal.service';
 
 @Component({
   selector: 'app-catalogouniversal',
@@ -9,18 +9,53 @@ import { CatalogoUniversalService } from '../catalogouniversal.service';
 export class CatalogouniversalComponent implements OnInit {
 
   catalogoData: any[] = [];
+  categoriasCatalogo: any[] = [];
+  itemSeleccionado?: any = {};
+  categoriaSeleccionada: number =0;
+  nuevoCatalogo: boolean = false;
   
   constructor(
-    private servicio: CatalogoUniversalService,
+    private servicioUniversal: CatalogoUniversalService,
   ) { }
 
   ngOnInit(): void {
     this.getTodosLosCatalogos();
+    this.getCategoriaCatalogo();
   }
 
   public getTodosLosCatalogos(){
-    this.servicio.getCatalogoTotal().subscribe(data => {
+    this.servicioUniversal.getCatalogoTotal().subscribe(data => {
       this.catalogoData = data;
     },error => { console.error(error + " ") });
   }
+  public getCategoriaCatalogo(){
+    this.servicioUniversal.getCategoria(1).subscribe(data =>{
+      this.categoriasCatalogo = data;
+    },
+    error => { console.error(error)});
+  }
+  public setSeleccionado(item: any){
+    this.nuevoCatalogo = false;
+    this.itemSeleccionado = item;   
+    this.categoriaSeleccionada = this.categoriasCatalogo.find(categoria => categoria.denominacionCat === this.itemSeleccionado.denominacionCat).idCatalogo; 
+  }
+
+  public actualizarCatalogo(catalogo: any){
+    this.servicioUniversal.actualizarCatalogo(catalogo).subscribe(data =>{
+      this.getTodosLosCatalogos();
+    },
+    error => { console.error(error)});
+  }
+
+  public crearCatalogo(catalogo: any){
+    this.servicioUniversal.crearCatalogo(catalogo).subscribe(data =>{
+      this.getTodosLosCatalogos();
+    },
+    error => { console.error(error)});
+  }
+  public limpiarSeleccionado(){
+    this.itemSeleccionado = {};
+    this.nuevoCatalogo = true;
+  }
+  
 }
