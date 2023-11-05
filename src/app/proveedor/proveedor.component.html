@@ -13,30 +13,34 @@
         </div>
     </div>
 </div>
-<section _ngcontent-lie-c52="" class="content">
-    <div _ngcontent-lie-c52="" class="card">
-        <div _ngcontent-lie-c52="" class="card-header border-0">
-            <div _ngcontent-lie-c52="" class="card-tools"><a (click)="getTodosLosProveedores()" class="btn btn-tool btn-sm">
+<section class="content">
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="card-tools">
+              <div style="text-align: left;width:1650px">
+              <a (click)="getTodosLosProveedores()" class="btn btn-tool btn-sm">
                     <i class="ion ion-ios-refresh-empty"></i></a>
-                <button type="button" data-toggle="modal" data-target="#modal-update" class="btn btn-success"> Nuevo
-                </button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update" (click)="limpiarSeleccionado()">
+                      Nuevo Proveedor
+                    </button>
+            </div>
             </div>
         </div>
-        <div _ngcontent-lie-c52="" class="card-body table-responsive p-0">
-            <table _ngcontent-lie-c52="" class="table table-striped table-valign-middle">
-                <thead _ngcontent-lie-c52="">
-                    <tr _ngcontent-lie-c52="">
-                        <th _ngcontent-lie-c52="">Id Proveedor</th>
-                        <th _ngcontent-lie-c52="">Tipo de Documento</th>
-                        <th _ngcontent-lie-c52="">Documento</th>
-                        <th _ngcontent-lie-c52="">Primer Nombre</th>
-                        <th _ngcontent-lie-c52="">Segundo Nombre</th>
-                        <th _ngcontent-lie-c52="">Primer Apellido</th>
-                        <th _ngcontent-lie-c52="">Segundo Apellido</th>
-                        <th _ngcontent-lie-c52="">Nombre de Contacto</th>
-                        <th _ngcontent-lie-c52="">Ciudad Proveedor</th>
-                        <th _ngcontent-lie-c52="">Tipo de Proveedor</th>
-                        <th _ngcontent-lie-c52=""></th>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-valign-middle">
+                <thead>
+                    <tr>
+                        <th>Id Proveedor</th>
+                        <th>Tipo de Documento</th>
+                        <th>Documento</th>
+                        <th>Primer Nombre</th>
+                        <th>Segundo Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Nombre de Contacto</th>
+                        <th>Ciudad Proveedor</th>
+                        <th>Tipo de Proveedor</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,9 +56,9 @@
                         <td>{{item.ciudadProv}}</td>
                         <td>{{ item.tipoProveedor}}</td>
                         <td>
-                            <a href="#" class="text-muted" data-toggle="modal" data-target="#modal-update">
-                                <i class="fas fa-pen"></i>
-                            </a>
+                          <a href="#" class="text-muted" (click)="setSeleccionado(item)" data-toggle="modal" data-target="#modal-update">
+                            <i class="fas fa-pen"></i>
+                          </a>
                         </td>
                     </tr>
 
@@ -77,45 +81,45 @@
             <div class="card-body">
                 <div class="form-group">
                     <label>Tipo de documento</label>
-                    <select class="form-control" name="tipoDocumentoPro">
+                    <select class="form-control" [(ngModel)]="tipoDocSeleccionado" name="tipoDocumentoPro">
                       <option *ngFor="let item of tiposDocumento" [value]="item.idCatalogo">{{item.denominacionCat}}
                       </option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Documento</label>
-                    <input type="number" class="form-control" name="documentoPro">
+                    <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.documentoPro" name="documentoPro">
                   </div>
                   <div class="form-group">
                     <label>Primer Nombre</label>
-                    <input type="text" class="form-control" name="pNombre">
+                    <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.pNombre" name="pNombre">
                   </div>
                   <div class="form-group">
                     <label>Segundo Nombre</label>
-                    <input type="text" class="form-control" name="sNombre">
+                    <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.sNombre" name="sNombre">
                   </div>
                   <div class="form-group">
                     <label>Primer Apellido</label>
-                    <input type="text" class="form-control" name="pApellido">
+                    <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.pApellido" name="pApellido">
                   </div>
                   <div class="form-group">
                     <label>Segundo Apellido</label>
-                    <input type="text" class="form-control" name="sApellido">
+                    <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.sApellido" name="sApellido">
                   </div>
                   <div class="form-group">
                     <label>Nombre de Contacto</label>
-                    <input type="text" class="form-control" name="nombreContacto">
+                    <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.nombreContacto" name="nombreContacto">
                   </div>
                   <div class="form-group">
                     <label>Ciudad Proveedor</label>
-                    <select class="form-control" name="ciudadProv">
+                    <select class="form-control" [(ngModel)]="ciudadSeleccionada" name="ciudadProv">
                       <option *ngFor="let item of ciudadProveedor" [value]="item.idCatalogo">{{item.denominacionCat}}
                       </option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label>Tipo de Proveedor</label>
-                    <select class="form-control" name="tipoProveedor">
+                    <select class="form-control" [(ngModel)]="tipoProveedorSeleccionado" name="tipoProveedor">
                       <option *ngFor="let item of tipoProveedor" [value]="item.idCatalogo">{{item.denominacionCat}}
                       </option>
                     </select>
@@ -124,12 +128,12 @@
             <!-- /.card-body -->
           </form>
         </div>
-        <!--<div class="modal-footer justify-content-between" *ngIf="nuevoProducto">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearProducto(itemSeleccionado)">Guardar</button>
+        <div class="modal-footer justify-content-between" *ngIf="nuevoProveedor">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearProveedor(itemSeleccionado)">Guardar</button>
         </div>
-        <div class="modal-footer justify-content-between" *ngIf="!nuevoProducto">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="actualizarProducto(itemSeleccionado)">Guardar</button>
-        </div>-->
+        <div class="modal-footer justify-content-between" *ngIf="!nuevoProveedor">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="actualizarProveedor(itemSeleccionado)">Guardar</button>
+        </div>
       </div>
       <!-- /.modal-content -->
     </div>

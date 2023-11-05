@@ -13,6 +13,11 @@ export class ProveedorComponent implements OnInit {
   tiposDocumento: any[] = [];
   ciudadProveedor: any[] = [];
   tipoProveedor: any[] = [];
+  itemSeleccionado?: any = {};
+  nuevoProveedor: boolean = false;
+  tipoDocSeleccionado: number =0;
+  ciudadSeleccionada: number =0;
+  tipoProveedorSeleccionado: number =0;
 
   constructor(private servicio: ProveedorService,
     private servicioCatalogo: CatalogoUniversalService,
@@ -49,4 +54,34 @@ export class ProveedorComponent implements OnInit {
     }, error => { console.error(error + " ") });
   }
 
+  public setSeleccionado(item: any){
+    this.nuevoProveedor = false;
+    this.itemSeleccionado = item;    
+    this.tipoDocSeleccionado = this.tiposDocumento.find(tipoDocumento => tipoDocumento.denominacionCat === this.itemSeleccionado.tipoDocumentoPro).idCatalogo;
+    this.ciudadSeleccionada = this.ciudadProveedor.find(ciudad => ciudad.denominacionCat === this.itemSeleccionado.ciudadProv).idCatalogo;
+    this.tipoProveedorSeleccionado = this.tipoProveedor.find(tipoProveedor => tipoProveedor.denominacionCat === this.itemSeleccionado.tipoProveedor).idCatalogo;
+  }
+
+  public actualizarProveedor(proveedor: any){
+    proveedor.tipoDocumentoPro = this.tipoDocSeleccionado
+    proveedor.ciudadProv = this.ciudadSeleccionada;
+    proveedor.tipoProveedor = this.tipoProveedorSeleccionado;
+    this.servicio.actualizarProveedor(proveedor).subscribe(data =>{
+      this.getTodosLosProveedores();
+    },
+    error => { console.error(error)});
+  }
+  public crearProveedor(proveedor: any){
+    proveedor.tipoDocumentoPro = this.tipoDocSeleccionado
+    proveedor.ciudadProv = this.ciudadSeleccionada;
+    proveedor.tipoProveedor = this.tipoProveedorSeleccionado;
+    this.servicio.crearProveedor(proveedor).subscribe(data =>{
+      this.getTodosLosProveedores();
+    },
+    error => { console.error(error)});
+  }
+  public limpiarSeleccionado(){
+    this.itemSeleccionado = {};
+    this.nuevoProveedor = true;
+  }
 }
