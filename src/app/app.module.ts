@@ -16,6 +16,7 @@ import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversa
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { AtributomultivariadoComponent } from './atributomultivariado/atributomultivariado.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { BodegaComponent } from './bodega/bodega.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { InventarioComponent } from './inventario/inventario.component';
     CatalogouniversalComponent,
     ProveedorComponent,
     AtributomultivariadoComponent,
-    InventarioComponent
+    InventarioComponent,
+    BodegaComponent
   ],
   imports: 
   [

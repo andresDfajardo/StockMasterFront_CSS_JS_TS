@@ -7,6 +7,7 @@ import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversa
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { AtributomultivariadoComponent } from './atributomultivariado/atributomultivariado.component';
 import { InventarioComponent } from './inventario/inventario.component';
+import { BodegaComponent } from './bodega/bodega.component';
 
 const routes: Routes = 
 [
@@ -37,6 +38,10 @@ const routes: Routes =
   {
     path: 'inventario',
     component:InventarioComponent,
+  },
+  {
+    path: 'bodega',
+    component:BodegaComponent,
   }
 ];
 
