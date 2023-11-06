@@ -13,6 +13,7 @@ export class CatalogouniversalComponent implements OnInit {
   itemSeleccionado?: any = {};
   categoriaSeleccionada: number =0;
   nuevoCatalogo: boolean = false;
+  idcatalogo: any = null;
   
   constructor(
     private servicioUniversal: CatalogoUniversalService,
@@ -57,5 +58,10 @@ export class CatalogouniversalComponent implements OnInit {
     this.itemSeleccionado = {};
     this.nuevoCatalogo = true;
   }
-  
+
+  filtrarDatos(){
+    this.servicioUniversal.getIdCatalogo(this.idcatalogo).subscribe(data => {
+      this.catalogoData = data;
+    },error => { console.error(error + " ") });
+  }
 }

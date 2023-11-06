@@ -41,6 +41,10 @@ export class CatalogoUniversalService {
   {
      return this.http.get(this.Url + "/universal/"+ tipcat, httpOptions);
   }
+  getIdCatalogo(id: number): Observable<any> 
+  {
+     return this.http.get(this.Url + "/universal/I/"+ id, httpOptions);
+  }
   
   actualizarCatalogo(catalogo: any): Observable<any> 
   {
