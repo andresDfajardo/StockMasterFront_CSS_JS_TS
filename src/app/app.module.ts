@@ -14,6 +14,8 @@ import { PrincipalComponent } from './principal/principal.component';
 import { ProductoComponent } from './producto/producto.component';
 import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversal.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
+import { AtributomultivariadoComponent } from './atributomultivariado/atributomultivariado.component';
+import { InventarioComponent } from './inventario/inventario.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
     PrincipalComponent,
     ProductoComponent,
     CatalogouniversalComponent,
-    ProveedorComponent
+    ProveedorComponent,
+    AtributomultivariadoComponent,
+    InventarioComponent
   ],
   imports: 
   [

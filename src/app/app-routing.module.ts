@@ -5,6 +5,8 @@ import { CatauniversalComponent } from './catauniversal/catauniversal.component'
 import { ProductoComponent } from './producto/producto.component';
 import { CatalogouniversalComponent } from './catalogouniversal/catalogouniversal.component';
 import { ProveedorComponent } from './proveedor/proveedor.component';
+import { AtributomultivariadoComponent } from './atributomultivariado/atributomultivariado.component';
+import { InventarioComponent } from './inventario/inventario.component';
 
 const routes: Routes = 
 [
@@ -27,6 +29,14 @@ const routes: Routes =
   {
     path: 'Proveedor',
     component:ProveedorComponent,
+  },
+  {
+    path: 'atributo',
+    component:AtributomultivariadoComponent,
+  },
+  {
+    path: 'inventario',
+    component:InventarioComponent,
   }
 ];
 
