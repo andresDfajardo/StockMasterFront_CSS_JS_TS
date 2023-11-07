@@ -45,7 +45,6 @@ export class CatalogoUniversalService {
   {
      return this.http.get(this.Url + "/universal/I/"+ id, httpOptions);
   }
-  
   actualizarCatalogo(catalogo: any): Observable<any> 
   {
     return this.http.put(this.Url + "/universal",catalogo, httpOptions);    

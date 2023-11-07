@@ -18,6 +18,7 @@ export class ProveedorComponent implements OnInit {
   tipoDocSeleccionado: number =0;
   ciudadSeleccionada: number =0;
   tipoProveedorSeleccionado: number =0;
+  idProveedor: any = null;
 
   constructor(private servicio: ProveedorService,
     private servicioCatalogo: CatalogoUniversalService,
@@ -60,6 +61,11 @@ export class ProveedorComponent implements OnInit {
     this.tipoDocSeleccionado = this.tiposDocumento.find(tipoDocumento => tipoDocumento.denominacionCat === this.itemSeleccionado.tipoDocumentoPro).idCatalogo;
     this.ciudadSeleccionada = this.ciudadProveedor.find(ciudad => ciudad.denominacionCat === this.itemSeleccionado.ciudadProv).idCatalogo;
     this.tipoProveedorSeleccionado = this.tipoProveedor.find(tipoProveedor => tipoProveedor.denominacionCat === this.itemSeleccionado.tipoProveedor).idCatalogo;
+  }
+  filtrarDatos(){
+    this.servicio.getIdProveedor(this.idProveedor).subscribe(data => {
+      this.proveedorData = data;
+    },error => { console.error(error + " ") });
   }
 
   public actualizarProveedor(proveedor: any){

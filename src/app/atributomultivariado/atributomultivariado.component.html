@@ -1,1 +1,115 @@
-<p>atributomultivariado works!</p>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Atributos Multivariados</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                    <li class="breadcrumb-item active">Atributos Multivariados</li>
+                </ol>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="input-group searchid">
+                <input type="number" [(ngModel)]="idAtributoMultivariado" class="form-control form-control-lg"
+                    placeholder="Id Atributo Multivariado">
+                <div class="input-group-append">
+                    <button (click)="filtrarDatos()" type="submit" class="btn btn-lg btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-tools">
+                <div style="text-align: left">  
+                    <a (click)="getTodosLosAtributos()" class="btn btn-tool btn-sm">
+                        <i class="ion ion-ios-refresh-empty"></i>
+                    </a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update"
+                        (click)="limpiarSeleccionado()">
+                        Nuevo Atributo Multivariado
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-valign-middle">
+                <thead>
+                    <tr>
+                        <th>Id Atributo Multivariado</th>
+                        <th>Proveedor</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of AtributoData">
+                        <td>{{ item.idAtributoMultivariado }}</td>
+                        <td>{{ item.idProveedor }}</td>
+                        <td>{{ item.idTipo}}</td>
+                        <td>{{ item.valorAtributoMultivariado}}</td>
+                        <td>
+                            <a href="#" class="text-muted" (click)="setSeleccionado(item)" data-toggle="modal"
+                                data-target="#modal-update">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="modal-update">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Proveedor</label>
+                            <select class="form-control" [(ngModel)]="proveedorSeleccionado" name="idProveedor">
+                                <option *ngFor="let item of dataProveedor" [value]="item.idProveedor">{{item.pNombre}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <select class="form-control"  [(ngModel)]="tipoSeleccionado" name="idTipo">
+                                <option *ngFor="let item of dataTipo" [value]="item.idCatalogo">{{item.denominacionCat}}</option>
+                              </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.valorAtributoMultivariado" name="valorAtributoMultivariado">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between" *ngIf="nuevoAtributo">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="crearAtributo(itemSeleccionado)">Guardar</button>
+            </div>
+            <div class="modal-footer justify-content-between" *ngIf="!nuevoAtributo">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="actualizarAtributo(itemSeleccionado)">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

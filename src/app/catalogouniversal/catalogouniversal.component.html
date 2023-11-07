@@ -24,12 +24,20 @@
           </button>
         </div>
       </div>
+      <div class="input-group searchtype">
+        <input type="number"  [(ngModel)]="llaveforanea" class="form-control form-control-lg" placeholder="Llave foránea">
+        <div class="input-group-append">
+          <button (click)="filtrarTipo()" type="submit" class="btn btn-lg btn-default">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
       <div class="card-tools">
         <div style="text-align: left;">
-          <a (click)="getTodosLosCatalogos()" class="btn btn-tool btn-sm">
+          <a (click)="getTodosLosCatalogos()" class="btn btn-tool">
             <i class="ion ion-ios-refresh-empty"></i>
           </a>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update"
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update"
             (click)="limpiarSeleccionado()">
             Nuevo Catalogo
           </button>

@@ -35,6 +35,10 @@ export class ProductoService
   {
     return this.http.get(this.Url + "/producto", httpOptions);    
   }
+  getIdProducto(id: number): Observable<any> 
+  {
+     return this.http.get(this.Url + "/producto/I/"+ id, httpOptions);
+  }
 
   actualizarProducto(producto: any): Observable<any> 
   {

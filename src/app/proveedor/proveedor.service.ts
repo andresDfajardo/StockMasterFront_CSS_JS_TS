@@ -35,7 +35,10 @@ export class ProveedorService
   {
     return this.http.get(this.Url + "/proveedor", httpOptions);    
   }
-
+  getIdProveedor(id: number): Observable<any> 
+  {
+     return this.http.get(this.Url + "/proveedor/I/"+ id, httpOptions);
+  }
   actualizarProveedor(proveedor: any): Observable<any> 
   {
     return this.http.put(this.Url + "/proveedor",proveedor, httpOptions);    

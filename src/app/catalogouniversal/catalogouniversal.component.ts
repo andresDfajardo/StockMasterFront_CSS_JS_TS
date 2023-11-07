@@ -14,6 +14,7 @@ export class CatalogouniversalComponent implements OnInit {
   categoriaSeleccionada: number =0;
   nuevoCatalogo: boolean = false;
   idcatalogo: any = null;
+  llaveforanea: any = null;
   
   constructor(
     private servicioUniversal: CatalogoUniversalService,
@@ -61,6 +62,11 @@ export class CatalogouniversalComponent implements OnInit {
 
   filtrarDatos(){
     this.servicioUniversal.getIdCatalogo(this.idcatalogo).subscribe(data => {
+      this.catalogoData = data;
+    },error => { console.error(error + " ") });
+  }
+  filtrarTipo(){
+    this.servicioUniversal.getCategoria(this.llaveforanea).subscribe(data => {
       this.catalogoData = data;
     },error => { console.error(error + " ") });
   }

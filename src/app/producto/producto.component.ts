@@ -16,6 +16,7 @@ export class ProductoComponent implements OnInit {
   itemSeleccionado?: any = {};
   categoriaSeleccionada: number =0;
   marcaSeleccionada: number = 0;
+  idProducto: any = null;
   nuevoProducto: boolean = false;
 
   constructor(
@@ -72,6 +73,12 @@ export class ProductoComponent implements OnInit {
       this.getTodosLosProductos();
     },
     error => { console.error(error)});
+  }
+
+  filtrarDatos(){
+    this.servicio.getIdProducto(this.idProducto).subscribe(data => {
+      this.productoData = data;
+    },error => { console.error(error + " ") });
   }
 
   public limpiarSeleccionado(){

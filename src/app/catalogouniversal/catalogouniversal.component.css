@@ -1,4 +1,9 @@
 .searchid{
     float: left;
-    width: 50%;
+    width: 40%;
+}
+.searchtype{
+    margin-left: 2em;
+    float: left;
+    width: 40%;
 }

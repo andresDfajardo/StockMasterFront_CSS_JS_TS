@@ -16,6 +16,14 @@
 <section class="content">
     <div class="card">
         <div class="card-header border-0">
+          <div class="input-group searchid">
+            <input type="number"  [(ngModel)]="idProveedor" class="form-control form-control-lg" placeholder="Id Proveedor">
+            <div class="input-group-append">
+              <button (click)="filtrarDatos()" type="submit" class="btn btn-lg btn-default">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
             <div class="card-tools">
               <div style="text-align: left;">
               <a (click)="getTodosLosProveedores()" class="btn btn-tool btn-sm">
