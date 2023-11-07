@@ -1,0 +1,121 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Compras</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                    <li class="breadcrumb-item active">Compras</li>
+                </ol>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<section class="content">
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="input-group searchid">
+                <input type="number" [(ngModel)]="idcompra" class="form-control form-control-lg"
+                    placeholder="Id compra">
+                <div class="input-group-append">
+                    <button (click)="filtrarDatos()" type="submit" class="btn btn-lg btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-tools">
+                <div style="text-align: left">  
+                    <a (click)="getTodasLasCompras()" class="btn btn-tool btn-sm">
+                        <i class="ion ion-ios-refresh-empty"></i>
+                    </a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update"
+                        (click)="limpiarSeleccionado()">
+                        Nueva Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-striped table-valign-middle">
+                <thead>
+                    <tr>
+                        <th>Id Compra</th>
+                        <th>Proveedor</th>
+                        <th>Fecha de Compra</th>
+                        <th>Lote</th>
+                        <th>Fecha de Entrega</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of compraData">
+                        <td>{{ item.idCompra }}</td>
+                        <td>{{ item.idProveedor }}</td>
+                        <td>{{item.fechaCompra}}</td>
+                        <td>{{ item.lote}}</td>
+                        <td>{{ item.fechaEntrega}}</td>
+                        <td>
+                            <a href="#" class="text-muted" (click)="setSeleccionado(item)" data-toggle="modal"
+                                data-target="#modal-update">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="modal-update">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Proveedor</label>
+                            <select class="form-control" [(ngModel)]="proveedorSeleccionado" name="idProveedor">
+                                <option *ngFor="let item of dataProveedor" [value]="item.idProveedor">{{item.pNombre}}
+                                </option>
+                              </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Compra</label>
+                            <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.fechaCompra"
+                            name="fechaCompra">
+                        </div>
+                        <div class="form-group">
+                            <label>Lote</label>
+                            <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.lote"
+                                name="lote">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Entrega</label>
+                            <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.fechaEntrega"
+                            name="fechaEntrega">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between" *ngIf="nuevaCompra">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="crearCompra(itemSeleccionado)">Guardar</button>
+            </div>
+            <div class="modal-footer justify-content-between" *ngIf="!nuevaCompra">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="actualizarCompra(itemSeleccionado)">Guardar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

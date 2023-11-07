@@ -8,6 +8,8 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { AtributomultivariadoComponent } from './atributomultivariado/atributomultivariado.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { BodegaComponent } from './bodega/bodega.component';
+import { CompraComponent } from './compra/compra.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 const routes: Routes = 
 [
@@ -42,6 +44,14 @@ const routes: Routes =
   {
     path: 'bodega',
     component:BodegaComponent,
+  },
+  {
+    path: 'compra',
+    component:CompraComponent,
+  },
+  {
+    path: 'contacto',
+    component:ContactoComponent,
   }
 ];
 

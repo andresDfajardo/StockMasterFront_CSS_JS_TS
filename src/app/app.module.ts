@@ -17,6 +17,8 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { AtributomultivariadoComponent } from './atributomultivariado/atributomultivariado.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { BodegaComponent } from './bodega/bodega.component';
+import { CompraComponent } from './compra/compra.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { BodegaComponent } from './bodega/bodega.component';
     ProveedorComponent,
     AtributomultivariadoComponent,
     InventarioComponent,
-    BodegaComponent
+    BodegaComponent,
+    CompraComponent,
+    ContactoComponent
   ],
   imports: 
   [
