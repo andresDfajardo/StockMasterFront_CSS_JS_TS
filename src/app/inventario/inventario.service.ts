@@ -35,4 +35,16 @@ export class InventarioService {
   {
     return this.http.get(this.Url + "/inventario", httpOptions);    
   }
+  crearInventario(inventario: any): Observable<any> 
+  {
+    return this.http.post(this.Url + "/inventario",inventario, httpOptions);    
+  }
+  actualizarInventario(inventario: any): Observable<any> 
+  {
+    return this.http.put(this.Url + "/inventario",inventario, httpOptions);    
+  }
+  getIdInventario(id: number): Observable<any> 
+  {
+     return this.http.get(this.Url + "/inventario/I/"+ id, httpOptions);
+  }
 }

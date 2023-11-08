@@ -16,14 +16,22 @@
   <section class="content">
     <div class="card">
       <div class="card-header border-0">
+        <div class="input-group searchid">
+          <input type="number"  [(ngModel)]="idInventario" class="form-control form-control-lg" placeholder="Id Inventario">
+          <div class="input-group-append">
+            <button (click)="filtrarDatos()" type="submit" class="btn btn-lg btn-default">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
         <div class="card-tools">
           <div style="text-align: left">
           <a (click)="getTodosLosInventarios()" class="btn btn-tool btn-sm">
             <i class="ion ion-ios-refresh-empty"></i>
           </a>
-          <!--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update" (click)="limpiarSeleccionado()">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-update" (click)="limpiarSeleccionado()">
             Nuevo Inventario
-          </button>-->
+          </button>
         </div>
         </div>
       </div>
@@ -61,60 +69,67 @@
       </div>
     </div>
   </section>
-  <!--<div class="modal fade" id="modal-update">
+  <div class="modal fade" id="modal-update">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title"></h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Bodega</label>
+                            <select class="form-control" [(ngModel)]="bodegaSeleccionada" name="idBodega">
+                                <option *ngFor="let item of bodegaInventario" [value]="item.idBodega">{{item.ubicacion}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Compra</label>
+                          <select class="form-control" [(ngModel)]="compraSeleccionada" name="idCompra">
+                              <option *ngFor="let item of compraInventario" [value]="item.idCompra">{{item.fechaCompra}}
+                              </option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Producto</label>
+                        <select class="form-control" [(ngModel)]="productoSeleccionado" name="idProducto">
+                            <option *ngFor="let item of productoInventario" [value]="item.idProducto">{{item.nombreProd}}
+                            </option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Existencias</label>
+                        <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.existencias" name="existencias">
+                      </div>
+                      <div class="form-group">
+                        <label>Fecha de Vencimiento</label>
+                        <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.fechaVencimiento"
+                        name="fechaVencimiento">
+                      </div>
+                      <div class="form-group">
+                        <label>Precio</label>
+                        <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.precio" name="precio">
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between" *ngIf="nuevoInventario">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="crearInventario(itemSeleccionado)">Guardar</button>
+            </div>
+            <div class="modal-footer justify-content-between" *ngIf="!nuevoInventario">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="actualizarInventario(itemSeleccionado)">Guardar</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="card-body">
-              <div class="form-group">
-                <label>Categoria</label>
-                <select class="form-control" [(ngModel)]="categoriaSeleccionada" name="categoriaPro">
-                  <option *ngFor="let item of categoriasProducto" [value]="item.idCatalogo">{{item.denominacionCat}}
-                  </option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.nombreProd" name="nombreProd">
-              </div>
-              <div class="form-group">
-                <label>Tamaño</label>
-                <input type="text" class="form-control" [(ngModel)]="itemSeleccionado.tamanoProd" name="tamanoProd">
-              </div>
-              <div class="form-group">
-                <label>Marca</label>
-                <select class="form-control"  [(ngModel)]="marcaSeleccionada" name="marcaProd">
-                  <option *ngFor="let item of marcasProducto" [value]="item.idCatalogo">{{item.denominacionCat}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Capacidad Nueva Orden</label>
-                <input type="number" class="form-control"  [(ngModel)]="itemSeleccionado.capacidadNuevaOrden" name="capacidadNuevaOrden">
-              </div>
-              <div class="form-group">
-                <label>Días de espera</label>
-                <input type="number" class="form-control"  [(ngModel)]="itemSeleccionado.diasEspera" name="diasEspera">
-              </div>
-            </div>-->
-            <!-- /.card-body -->
-          <!--</form>
-        </div>
-        <div class="modal-footer justify-content-between" *ngIf="nuevoProducto">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="crearProducto(itemSeleccionado)">Guardar</button>
-        </div>
-        <div class="modal-footer justify-content-between" *ngIf="!nuevoProducto">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="actualizarProducto(itemSeleccionado)">Guardar</button>
-        </div>
-      </div>
-       /.modal-content 
+        <!-- /.modal-content -->
     </div>
-    /.modal-dialog 
-  </div>-->
-  <!-- /.modal -->
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
