@@ -19,6 +19,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { BodegaComponent } from './bodega/bodega.component';
 import { CompraComponent } from './compra/compra.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { PreguntasfrecuentesComponent } from './preguntasfrecuentes/preguntasfrecuentes.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ContactoComponent } from './contacto/contacto.component';
     InventarioComponent,
     BodegaComponent,
     CompraComponent,
-    ContactoComponent
+    ContactoComponent,
+    PreguntasfrecuentesComponent
   ],
   imports: 
   [

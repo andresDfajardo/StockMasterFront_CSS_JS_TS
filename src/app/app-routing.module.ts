@@ -10,6 +10,7 @@ import { InventarioComponent } from './inventario/inventario.component';
 import { BodegaComponent } from './bodega/bodega.component';
 import { CompraComponent } from './compra/compra.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { PreguntasfrecuentesComponent } from './preguntasfrecuentes/preguntasfrecuentes.component';
 
 const routes: Routes = 
 [
@@ -52,6 +53,10 @@ const routes: Routes =
   {
     path: 'contacto',
     component:ContactoComponent,
+  },
+  {
+    path: 'preguntasfrecuentes',
+    component:PreguntasfrecuentesComponent,
   }
 ];
 
