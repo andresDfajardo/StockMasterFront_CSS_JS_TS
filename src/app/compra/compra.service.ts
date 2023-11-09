@@ -55,4 +55,8 @@ export class CompraService
   {
      return this.http.get(this.Url + "/compra/I/"+ id, httpOptions);
   }
+  informeCompra(idProveedor: any,fechaInicial: any,fechaFinal: any): Observable<any> 
+  {
+     return this.http.get(this.Url + "/compra/N1/" + idProveedor + "/" + fechaInicial + "/"+ fechaFinal, httpOptions);
+  }
 }

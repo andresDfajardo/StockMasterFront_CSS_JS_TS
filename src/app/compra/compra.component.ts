@@ -13,6 +13,9 @@ export class CompraComponent implements OnInit {
   compraData: any[] = [];
   dataProveedor: any[] = [];
   idcompra: any = null;
+  fechaInicial: any = null;
+  fechaFinal: any = null;
+  idProveedor: any = null;
   proveedorSeleccionado: any ={};
 
   constructor(private servicio: CompraService) {}
@@ -26,6 +29,13 @@ export class CompraComponent implements OnInit {
     itemSeleccionado.idProveedor = this.proveedorSeleccionado;
     this.servicio.actualizarCompra(itemSeleccionado).subscribe(data =>{
       this.getTodasLasCompras();
+    },
+    error => { console.error(error)});
+  }
+
+  InformeCompra(){
+    this.servicio.informeCompra(this.idProveedor,this.fechaInicial,this.fechaFinal).subscribe(data =>{
+      this.compraData = data;
     },
     error => { console.error(error)});
   }
