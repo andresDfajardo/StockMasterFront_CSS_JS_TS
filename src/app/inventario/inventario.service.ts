@@ -47,4 +47,8 @@ export class InventarioService {
   {
      return this.http.get(this.Url + "/inventario/I/"+ id, httpOptions);
   }
+  informeInventario(idBodega: any,existencias:any,fechaInicial: any,fechaFinal: any): Observable<any> 
+  {
+     return this.http.get(this.Url + "/inventario/N2/" + idBodega + "/" + existencias + "/" + fechaInicial + "/"+ fechaFinal, httpOptions);
+  }
 }

@@ -133,3 +133,41 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<div class="col-md-6 centro">
+  <div class="card card-primary">
+      <div class="card-header">
+    <h3 class="card-title">Informe 2 Por Rango de Fechas</h3>
+      </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Bodega</label>
+        <select class="form-control" [(ngModel)]="idBodega" name="idBodega">
+          <option *ngFor="let item of bodegaInventario" [value]="item.idBodega">{{item.ubicacion}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Cantidad de existencias</label>
+        <input type="text" class="form-control" [(ngModel)]="existencias" name="existencias">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Fecha de Vencimiento 1</label>
+        <input type="text" class="form-control" [(ngModel)]="fechaInicial" name="fechaInicial">
+      </div>
+      <div class="form-group">
+          <label for="exampleInputPassword1">Fecha de Vencimiento 2</label>
+          <input type="text" class="form-control" [(ngModel)]="fechaFinal" name="fechaFinal">
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button (click)="informeInventario()" type="submit" class="btn btn-lg btn-default">
+          <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </form>
+</div>
+</div>  

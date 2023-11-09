@@ -25,6 +25,10 @@ export class InventarioComponent implements OnInit {
   bodegaSeleccionada: number =0;
   productoSeleccionado: number =0;
   idInventario: any = null;
+  fechaInicial: any = null;
+  fechaFinal: any = null;
+  idBodega: any = null;
+  existencias: any = null;
 
   constructor(
     private servicioInventario: InventarioService,
@@ -98,5 +102,11 @@ export class InventarioComponent implements OnInit {
     this.servicioInventario.getIdInventario(this.idInventario).subscribe(data => {
       this.inventarioData = data;
     },error => { console.error(error + " ") });
+  }
+  informeInventario(){
+    this.servicioInventario.informeInventario(this.idBodega,this.existencias,this.fechaInicial,this.fechaFinal).subscribe(data =>{
+      this.inventarioData = data;
+    },
+    error => { console.error(error)});
   }
 }
